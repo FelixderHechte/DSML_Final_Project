@@ -30,7 +30,6 @@ def lorenz63_model(t, state, sigma=10.0, beta=8/3, rho=28.0):
     return [dx, dy, dz]
 
 import numpy as np
-import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
 
 def lorenz63_timeseries(initial_state=[1.0, 1.0, 1.0], t_start=0.0, t_end=40.0, num_points=10000, sigma=10.0, beta=8/3, rho=28.0):
@@ -57,7 +56,7 @@ def lorenz63_timeseries(initial_state=[1.0, 1.0, 1.0], t_start=0.0, t_end=40.0, 
         t : ndarray
             Time values of the solution
         sol : ndarray
-            Solution array of shape (num_points, 3) containing x, y, z values
+            Solution array of shape (3, num_points) containing x, y, z values
     """
     def lorenz63_model(t, state, sigma, beta, rho):
         x, y, z = state
@@ -77,17 +76,17 @@ def lorenz63_timeseries(initial_state=[1.0, 1.0, 1.0], t_start=0.0, t_end=40.0, 
         atol=1e-10
     )
     
-    return solution.t, solution.y.T
+    return solution.t, solution.y
 
-# Example usage with plotting
-t, sol = lorenz63_timeseries()
-plt.plot(t, sol[:, 0], label="x(t)")
-plt.plot(t, sol[:, 1], label="y(t)")
-plt.plot(t, sol[:, 2], label="z(t)")
-plt.legend()
+# Generate a time series using the Lorenz 63 model
+t, solution = lorenz63_timeseries()
+# Plot the x-component of the solution
+plt.figure(figsize=(10, 4))
+plt.plot(solution.t, solution.y[0], label="x(t)")
 plt.xlabel("Time")
-plt.ylabel("Values")
-plt.title("Lorenz 63 System")
+plt.ylabel("x")
+plt.title("Lorenz 63 Model - x Component")
+plt.legend()
 plt.show()
 
 # Optionally, plot the 3D trajectory
@@ -95,7 +94,7 @@ from mpl_toolkits.mplot3d import Axes3D
 
 fig = plt.figure(figsize=(8, 6))
 ax = fig.add_subplot(111, projection='3d')
-ax.plot(sol[:,0], sol[:,1], sol[:,2])
+ax.plot(solution.y[0], solution.y[1], solution.y[2])
 ax.set_xlabel("X")
 ax.set_ylabel("Y")
 ax.set_zlabel("Z")

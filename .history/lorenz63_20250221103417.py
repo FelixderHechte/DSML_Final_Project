@@ -91,13 +91,13 @@ plt.title("Lorenz 63 System")
 plt.show()
 
 # Optionally, plot the 3D trajectory
-from mpl_toolkits.mplot3d import Axes3D
+# from mpl_toolkits.mplot3d import Axes3D
 
-fig = plt.figure(figsize=(8, 6))
-ax = fig.add_subplot(111, projection='3d')
-ax.plot(sol[:,0], sol[:,1], sol[:,2])
-ax.set_xlabel("X")
-ax.set_ylabel("Y")
-ax.set_zlabel("Z")
-ax.set_title("Lorenz 63 Attractor")
-plt.show()
+# fig = plt.figure(figsize=(8, 6))
+# ax = fig.add_subplot(111, projection='3d')
+# ax.plot(solution.y[0], solution.y[1], solution.y[2])
+# ax.set_xlabel("X")
+# ax.set_ylabel("Y")
+# ax.set_zlabel("Z")
+# ax.set_title("Lorenz 63 Attractor")
+# plt.show()
