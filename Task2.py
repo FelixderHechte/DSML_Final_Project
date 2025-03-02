@@ -4,7 +4,6 @@ import numpy as np
 # from lorenz63 import lorenz63_timeseries
 import torch
 
-print(torch.cuda.is_available())
 
 
 def generate_time_series(model, T):
