@@ -50,6 +50,9 @@ def generate_lorenz_sequences(seq_length=30, num_samples=1000):
 # Generate sequences from the Lorenz x-component
 lorenz_sequences = generate_lorenz_sequences(seq_length=30, num_samples=1000)
 
+
+
+
 # Parameters
 seq_length = 30
 input_size = 1
